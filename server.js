@@ -1,4 +1,3 @@
-
 var http = require('http')
 var url = require('url')
 
@@ -9,8 +8,15 @@ var server = http.createServer(function (request, response) {
 
   if(requestUrl.pathname === '/health') {
     response.writeHead(200, {'Content-Type': 'text/plain'})
-    response.end('Server is healthy\n')
-  } else {
+    response.end('API Management Server is healthy\n')
+  } else if(requestUrl.pathname === '/getCustomer') {
+    response.writeHead(200, {'Content-Type': 'text/plain'})
+    response.end(' Return Customer Data\n')
+  }  else if(requestUrl.pathname === '/getSales') {
+      response.writeHead(200, {'Content-Type': 'text/plain'})
+      response.end('Return Sales Data\n')
+  } 
+  else {
     response.writeHead(200, {'Content-Type': 'text/plain'})
     response.end('Hello Test api - 3 Scale Testing\n')
   }
@@ -18,4 +24,4 @@ var server = http.createServer(function (request, response) {
 
 server.listen(port)
 
-console.log('Server running at http://localhost:' + port)
+//console.log('Server running at http://localhost:' + port)
